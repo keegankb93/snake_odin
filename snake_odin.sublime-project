@@ -1,0 +1,46 @@
+{
+    "folders":
+    [
+        {
+            "path": ".",
+        }
+    ],
+    "build_systems":
+    [
+        {
+            "name": "Odin",
+            "file_regex": "^(.+)\\(([0-9]+):([0-9]+)\\) (.+)$",
+            "cmd":
+            [
+                "odin",
+                "run",
+                ".",
+                "-debug"
+            ],
+            "working_dir": "$folder",
+        },
+        {
+            "name": "Odin (zsh + Terminus)",
+            "target": "terminus_exec",
+            "cancel": "terminus_cancel_build",
+            "file_regex": "^(.+)\\(([0-9]+):([0-9]+)\\) (.+)$",
+            "cmd":
+            [
+                "/bin/zsh",
+                "-lc",
+                "source ~/.zshrc; odin run . -debug"
+            ],
+            "working_dir": "$folder",
+        }
+    ],
+    "settings":
+    {
+		"LSP":
+		{
+			"odin":
+			{
+				"enabled": true
+			}
+		}
+	},
+}
